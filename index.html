@@ -1,1 +1,518 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alex Morgan | Price Action Trader</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #0b1220;
+            color: #ffffff;
+            line-height: 1.7;
+        }
+
+        :root {
+            --gold: #d9ad58;
+            --dark: #0b1220;
+            --card: #141e30;
+            --muted: #a8b2c3;
+        }
+
+        /* Navigation */
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 22px 8%;
+            background: #0b1220;
+            border-bottom: 1px solid #263247;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .logo {
+            font-size: 22px;
+            font-weight: bold;
+            color: var(--gold);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: white;
+            transition: 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--gold);
+        }
+
+        /* Hero Section */
+
+        .hero {
+            min-height: 85vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 80px 12%;
+            background:
+                linear-gradient(90deg, rgba(11,18,32,.97),
+                rgba(11,18,32,.75)),
+                url("https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3")
+                center/cover;
+        }
+
+        .hero h1 {
+            font-size: clamp(38px, 6vw, 68px);
+            line-height: 1.2;
+            max-width: 750px;
+            margin-bottom: 20px;
+        }
+
+        .hero h1 span {
+            color: var(--gold);
+        }
+
+        .hero p {
+            color: var(--muted);
+            font-size: 18px;
+            max-width: 600px;
+            margin-bottom: 30px;
+        }
+
+        .btn {
+            display: inline-block;
+            background: var(--gold);
+            color: #101827;
+            padding: 13px 28px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .btn:hover {
+            background: #f0c979;
+            transform: translateY(-3px);
+        }
+
+        /* General Sections */
+
+        section {
+            padding: 85px 10%;
+        }
+
+        .section-title {
+            font-size: 34px;
+            margin-bottom: 15px;
+        }
+
+        .section-title span {
+            color: var(--gold);
+        }
+
+        .section-intro {
+            color: var(--muted);
+            max-width: 650px;
+            margin-bottom: 40px;
+        }
+
+        /* About */
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .about-content p {
+            color: var(--muted);
+            margin-bottom: 15px;
+        }
+
+        .about-image {
+            width: 100%;
+            height: 350px;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+
+        /* Expertise */
+
+        .expertise {
+            background: #101a2b;
+        }
+
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .card {
+            background: var(--card);
+            padding: 30px;
+            border-radius: 10px;
+            border: 1px solid #263247;
+            transition: 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-6px);
+            border-color: var(--gold);
+        }
+
+        .card .icon {
+            font-size: 32px;
+            margin-bottom: 15px;
+        }
+
+        .card h3 {
+            color: var(--gold);
+            margin-bottom: 12px;
+        }
+
+        .card p {
+            color: var(--muted);
+        }
+
+        /* Trading Philosophy */
+
+        .philosophy {
+            text-align: center;
+        }
+
+        .philosophy blockquote {
+            font-size: 25px;
+            color: var(--gold);
+            max-width: 800px;
+            margin: 30px auto;
+            font-style: italic;
+        }
+
+        /* Contact */
+
+        .contact {
+            background: #101a2b;
+            text-align: center;
+        }
+
+        .contact-details {
+            margin-top: 30px;
+            color: var(--muted);
+        }
+
+        .contact-details p {
+            margin: 12px;
+        }
+
+        .contact-details a {
+            color: var(--gold);
+            text-decoration: none;
+        }
+
+        .contact-buttons {
+            margin-top: 30px;
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .secondary-btn {
+            display: inline-block;
+            border: 1px solid var(--gold);
+            color: var(--gold);
+            padding: 12px 25px;
+            border-radius: 5px;
+            text-decoration: none;
+        }
+
+        .secondary-btn:hover {
+            background: var(--gold);
+            color: var(--dark);
+        }
+
+        /* Footer */
+
+        footer {
+            text-align: center;
+            padding: 25px;
+            background: #080e18;
+            color: var(--muted);
+            font-size: 14px;
+        }
+
+        /* Mobile Responsive */
+
+        @media (max-width: 768px) {
+            nav {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            nav ul {
+                gap: 15px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .hero {
+                padding: 70px 8%;
+            }
+
+            section {
+                padding: 65px 8%;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+
+            .cards {
+                grid-template-columns: 1fr;
+            }
+
+            .section-title {
+                font-size: 29px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navigation -->
+
+    <nav>
+        <div class="logo">ALEX MORGAN.</div>
+
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#expertise">Expertise</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero -->
+
+    <header class="hero" id="home">
+        <h1>
+            Understanding Markets Through
+            <span>Price Action.</span>
+        </h1>
+
+        <p>
+            Independent Stock Trader | Price Action Analyst |
+            Focused on market structure, discipline and
+            risk management.
+        </p>
+
+        <a href="#about" class="btn">Discover My Journey</a>
+    </header>
+
+    <!-- About -->
+
+    <section id="about">
+        <div class="about-content">
+
+            <div>
+                <h2 class="section-title">
+                    About <span>Me</span>
+                </h2>
+
+                <p>
+                    Hello, I am Alex Morgan, an independent stock
+                    trader passionate about understanding financial
+                    markets through the art of price action trading.
+                </p>
+
+                <p>
+                    My trading approach focuses on reading raw
+                    price movements, identifying market trends,
+                    understanding support and resistance, and
+                    recognizing important market structures.
+                </p>
+
+                <p>
+                    I believe successful trading is not about
+                    predicting every market move. It is about
+                    patience, consistency, discipline and managing
+                    risk effectively.
+                </p>
+
+                <a href="#contact" class="btn">Get In Touch</a>
+            </div>
+
+            <div>
+                <img
+                    class="about-image"
+                    src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e"
+                    alt="Trader portrait">
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Expertise -->
+
+    <section class="expertise" id="expertise">
+
+        <h2 class="section-title">
+            My Trading <span>Approach</span>
+        </h2>
+
+        <p class="section-intro">
+            A disciplined approach to understanding the
+            stock market through price movements and
+            technical analysis.
+        </p>
+
+        <div class="cards">
+
+            <div class="card">
+                <div class="icon">📊</div>
+                <h3>Price Action Analysis</h3>
+                <p>
+                    Studying candlestick patterns, price movements
+                    and market behavior to understand potential
+                    trading opportunities.
+                </p>
+            </div>
+
+            <div class="card">
+                <div class="icon">📈</div>
+                <h3>Market Structure</h3>
+                <p>
+                    Identifying trends, breakouts, support,
+                    resistance and important market levels.
+                </p>
+            </div>
+
+            <div class="card">
+                <div class="icon">🎯</div>
+                <h3>Risk Management</h3>
+                <p>
+                    Prioritizing capital protection, calculated
+                    risk and disciplined decision-making.
+                </p>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Philosophy -->
+
+    <section class="philosophy">
+
+        <h2 class="section-title">
+            My Trading <span>Philosophy</span>
+        </h2>
+
+        <blockquote>
+            "The market speaks through price.
+            The key is learning how to read it,
+            wait patiently and act with discipline."
+        </blockquote>
+
+        <p class="section-intro" style="margin: auto;">
+            Trading is a continuous learning process.
+            Patience and discipline matter more than
+            chasing every market opportunity.
+        </p>
+
+    </section>
+
+    <!-- Contact -->
+
+    <section class="contact" id="contact">
+
+        <h2 class="section-title">
+            Let's <span>Connect</span>
+        </h2>
+
+        <p class="section-intro" style="margin: auto;">
+            Have a question or want to connect?
+            Feel free to reach out through the details below.
+        </p>
+
+        <div class="contact-details">
+
+            <p>
+                Email:
+                <a href="mailto:yourname@email.com">
+                    yourname@email.com
+                </a>
+            </p>
+
+            <p>
+                Phone: +123 456 7890
+            </p>
+
+            <p>
+                Location: Your City, Country
+            </p>
+
+        </div>
+
+        <div class="contact-buttons">
+
+            <a href="mailto:yourname@email.com" class="btn">
+                Send an Email
+            </a>
+
+            <a href="https://wa.me/1234567890"
+               target="_blank"
+               rel="noopener noreferrer"
+               class="secondary-btn">
+                WhatsApp Me
+            </a>
+
+        </div>
+
+    </section>
+
+    <!-- Footer -->
+
+    <footer>
+        <p>
+            © <span id="year"></span> Alex Morgan.
+            All Rights Reserved.
+        </p>
+        <p>Price Action Trader | Independent Market Analyst</p>
+        <p>
+            Trading involves risk. Nothing on this website
+            constitutes financial advice.
+        </p>
+    </footer>
+
+    <script>
+        document.getElementById("year").textContent =
+            new Date().getFullYear();
+    </script>
+
+</body>
+</html>
+
